@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     private final String RESULT = "res";
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,11 +35,6 @@ public class MainActivity extends AppCompatActivity {
         edNum3 = findViewById(R.id.edNum3);
         result = findViewById(R.id.resultSum);
         btnResult = findViewById(R.id.btnResult);
-
-        clickButton();
-    }
-
-    public void clickButton(){
         btnResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,31 +42,26 @@ public class MainActivity extends AppCompatActivity {
                 num1 = Integer.parseInt(edNum1.getText().toString());
                 num2 = Integer.parseInt(edNum2.getText().toString());
                 num3 = Integer.parseInt(edNum3.getText().toString());
-                res = (num1 + num2)/num3;
+                res = (num1 + num2) / num3;
                 result.setText(" " + res);
 
             }
         });
 
-
     }
+
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt(KEY1, num1);
-        outState.putInt(KEY2, num2);
-        outState.putInt(KEY3, num3);
         outState.putInt(RESULT, res);
     }
 
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        num1 = savedInstanceState.getInt(KEY1);
-        num2 = savedInstanceState.getInt(KEY2);
-        num3 = savedInstanceState.getInt(KEY3);
         res = savedInstanceState.getInt(RESULT);
+        result.setText(String.valueOf(res));
     }
 
 
